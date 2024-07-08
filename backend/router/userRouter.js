@@ -2,6 +2,7 @@ import express from "express";
 import {
   addNewAdmin,
   addNewDoctor,
+  deleteDoctor,
   getAllDoctors,
   getUserDetails,
 //   addNewDoctor,
@@ -25,6 +26,7 @@ router.post("/patient/register", patientRegister);
 router.post("/login", login);
 router.post("/admin/addnew", isAdminAuthenticated, addNewAdmin);
 router.post("/doctor/addnew", isAdminAuthenticated, addNewDoctor);
+router.delete("/doctor/delete/:id", isAdminAuthenticated, deleteDoctor);
 router.get("/doctors", getAllDoctors);
 router.get("/patient/me", isPatientAuthenticated, getUserDetails);
 router.get("/admin/me", isAdminAuthenticated, getUserDetails);

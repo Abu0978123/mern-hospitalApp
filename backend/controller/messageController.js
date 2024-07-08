@@ -19,6 +19,7 @@ export const sendMessage = catchAsyncErrors(async (req, res, next) => {
            
 })
 
+
 // get all messages to the admin
 export const getAllMessages = catchAsyncErrors(async (req, res, next) => {
     const messages = await Message.find();
@@ -27,3 +28,21 @@ export const getAllMessages = catchAsyncErrors(async (req, res, next) => {
       messages,
     });
   });
+
+  export const deleteMessage = catchAsyncErrors(async (req, res, next) => {
+    const { id } = req.params;
+    
+    const message = await Message.findById(id);
+    
+    if (!message) {
+        return next(new ErrorHandler("Message not found", 404));
+    }
+    
+    await Message.findByIdAndDelete(id);
+    
+    res.status(200).json({
+        success: true,
+        message: "Message deleted successfully!"
+    });
+});
+

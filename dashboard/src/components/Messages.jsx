@@ -26,6 +26,18 @@ const Messages = () => {
     return <Navigate to={"/login"} />;
   }
 
+  const deleteMessage = async (id) => {
+    try {
+      await axios.delete(`http://localhost:4000/api/v1/message/delete/${id}`, {
+        withCredentials: true,
+      });
+      setMessages(messages.filter((message) => message._id !== id));
+      toast.success("Message deleted successfully!");
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
+
   return (
     <section className="page messages">
       <h1>MESSAGE</h1>
@@ -50,6 +62,7 @@ const Messages = () => {
                   <p>
                     Message: <span>{element.message}</span>
                   </p>
+                  <button className="button" onClick={() => deleteMessage(element._id)}>Delete</button>
                 </div>
               </div>
             );

@@ -191,6 +191,24 @@ export const getAllDoctors = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// delete doctor
+export const deleteDoctor = catchAsyncErrors(async (req, res, next) => {
+  const { id } = req.params;
+  
+  const message = await User.findById(id);
+  
+  if (!message) {
+      return next(new ErrorHandler("Doctor not found", 404));
+  }
+  
+  await User.findByIdAndDelete(id);
+  
+  res.status(200).json({
+      success: true,
+      message: "Doctor deleted successfully!"
+  });
+});
+
 // get the details of admin and patient
 export const getUserDetails = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
