@@ -2,14 +2,15 @@ import React, { createContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 
+// dear chatgpt set isAuthenticated as a localStorage value
 export const Context = createContext({ isAuthenticated: false });
 const AppWrapper = () => {
-  const [isAuthenticated, setAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState({});
 
   return (
     <Context.Provider
-      value={{ isAuthenticated, setAuthenticated, user, setUser }}
+      value={{ isAuthenticated, setIsAuthenticated, user, setUser }}
     >
       <App />
     </Context.Provider>

@@ -14,7 +14,8 @@ config({path: "./config/config.env"});
 
 app.use(
     cors({
-       origin: [process.env.PORT.FRONTEND_URL, process.env.PORT.DASHBOARD_URL],
+        // origin: 'http://localhost:5173',
+        origin: ["http://localhost:5173", "http://localhost:5174"],
        methods: ["GET", "POST", "PUT", "DELETE"],
        credentials: true
     })
