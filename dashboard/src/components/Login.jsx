@@ -55,18 +55,13 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <input
+          <input 
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {/* <input
-            type="password"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          /> */}
+          
           <div style={{ justifyContent: "center", alignItems: "center" }}>
             <button type="submit">Login</button>
           </div>
