@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Context } from './main';
 import { useContext, useEffect } from 'react';
 import axios from 'axios';
+import Sidebar from './components/Sidebar'
 
 function App() {
   const { isAuthenticated, setIsAuthenticated, setAdmin } =
@@ -39,6 +40,7 @@ console.log(isAuthenticated)
  
   return (
     <Router>
+      <Sidebar/>
     <Routes>
       <Route path='/' element={<Dashboard/>}/>
       <Route path='/login' element={<Login/>}/>
